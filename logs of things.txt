@@ -5,3 +5,5 @@ search button doesnt work in timeline
 floating button in timeline: https://github.com/pregiotek/ion-floating-menu
 
 firebase is defined at the top of the app.js
+
+FB sign in tut : https://ccoenraets.github.io/ionic-tutorial/ionic-facebook-integration.html
