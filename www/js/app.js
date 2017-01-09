@@ -1,5 +1,5 @@
 var app = angular.module('conference', ['ionic', 'conference.AppCtrl', 'conference.SessionsCtrl', 'conference.SessionCtrl',
-    'conference.FavoritesCtrl', 'conference.ProfileCtrl','conference.BalanceCtrl','ion-floating-menu','ngCordova', 'firebase'])
+    'conference.FavoritesCtrl', 'conference.ProfileCtrl','conference.BalanceCtrl','conference.ContributionCtrl','ion-floating-menu','ngCordova', 'firebase'])
 
 
 
@@ -96,6 +96,16 @@ var app = angular.module('conference', ['ionic', 'conference.AppCtrl', 'conferen
         'menuContent' :{
           templateUrl: "templates/balance.html",
           controller:"BalanceCtrl"
+        }
+      }
+    })
+
+    .state('app.contribution', {
+      url: "/contribute",
+      views:{
+        'menuContent' :{
+          templateUrl: "templates/contribution.html",
+          controller:"ContributionCtrl"
         }
       }
     })

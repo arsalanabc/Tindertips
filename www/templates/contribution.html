@@ -1,0 +1,20 @@
+<ion-view title="{{user.tag}}'s wishlist">
+	<ion-nav-buttons side="left">
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+	</ion-nav-buttons>
+  	<ion-nav-buttons side="right">
+    	<button class="button button-icon icon ion-ios7-minus-outline" ng-click="showBtn()"></button>
+  	</ion-nav-buttons>
+  	<ion-content>
+	  	<ion-list can-swipe="listCanSwipe">
+	  		<ion-item>
+	  			<table style="width:100%;">
+	  				<tr style="font-weight: bold"><th style="width:80%">ITEM</th><th>Price</th><th></th></tr>
+	  				<tr><td>ITEM 1</td><td align=center>100pts</td><td><button>Contribute</button></td></tr>
+	  			</table>
+	  		</ion-item>
+	  		<ion-item>
+	  		</ion-item>
+	  	</ion-list>
+  	</ion-content>
+</ion-view>

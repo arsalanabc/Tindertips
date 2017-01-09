@@ -6,6 +6,7 @@ angular.module('conference.SessionsCtrl', ['conference.services'])
 
 
    $scope.sessions = SessionService.getUsers();
+   console.log($scope.sessions)
    
    // Get all the sessions
    
@@ -106,7 +107,7 @@ $scope.startModal = function(){
 
 
   
-
+  // TODO: change this part to search through list items to wishlist
     // Filter sessions by entering text in field and selecting from drop-down
     $scope.setFilter = function() {
         var search = $scope.searchTxt;

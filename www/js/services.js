@@ -79,7 +79,6 @@ angular.module('conference.services', ['ngResource','firebase'])
 })
 
 
-
 .service('FavoriteService', ['$filter', function($filter) {
     var service = {
         favorites: [],
