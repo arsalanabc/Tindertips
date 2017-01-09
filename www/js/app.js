@@ -1,5 +1,5 @@
 var app = angular.module('conference', ['ionic', 'conference.AppCtrl', 'conference.SessionsCtrl', 'conference.SessionCtrl',
-    'conference.FavoritesCtrl', 'conference.ProfileCtrl','conference.BalanceCtrl','conference.ContributionCtrl','ion-floating-menu','ngCordova', 'firebase'])
+    'conference.FavoritesCtrl', 'conference.ProfileCtrl','conference.BalanceCtrl','conference.ContributionCtrl','ion-floating-menu','ngCordova', 'firebase', 'conference.LandingPageCtrl'])
 
 
 
@@ -43,7 +43,7 @@ var app = angular.module('conference', ['ionic', 'conference.AppCtrl', 'conferen
 
 .config(function($stateProvider, $urlRouterProvider) {
   //Facebook integration - Register your app and get your App ID from http://developer.facebook.com
-  openFB.init({appId: 'your-app-id'});
+  openFB.init({appId: 'app id'});
 
 
         $stateProvider
@@ -130,6 +130,16 @@ var app = angular.module('conference', ['ionic', 'conference.AppCtrl', 'conferen
       }
     })
 
+    .state('app.landingpage', {
+          url: "/landingpage",
+          views: {
+              'menuContent': {
+                  templateUrl: "templates/landingpage.html",
+                  controller: "LandingPageCtrl"
+              }
+            }      
+        })
+
     .state('app.timeline', {
       url: "/timeline",
       views: {
@@ -140,15 +150,9 @@ var app = angular.module('conference', ['ionic', 'conference.AppCtrl', 'conferen
         }      
     })
 
-     .state('app.landingpage', {
-      url: "/landingpage",
-      views: {
-          'menuContent': {
-              templateUrl: "templates/landingpage.html",
-              controller: "SessionsCtrl"
-          }
-        }      
-    })
+     
+
+
 
     .state('app.session', {
       url: "/sessions/:sessionId",
@@ -160,5 +164,5 @@ var app = angular.module('conference', ['ionic', 'conference.AppCtrl', 'conferen
       }
     });
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('app/sessions');
+    $urlRouterProvider.otherwise('landingpage');
 });

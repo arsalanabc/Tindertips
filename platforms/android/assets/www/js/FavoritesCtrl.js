@@ -3,7 +3,7 @@ angular.module('conference.FavoritesCtrl', ['conference.services'])
 .controller('FavoritesCtrl', function($scope, $ionicLoading, FavoriteService, FacebookService, TwitterService) {
     $scope.favorites = FavoriteService.favorites;
     $scope.showDelete = false;
-
+    $scope.item = {};
     $scope.showBtn = function() {
         if ($scope.showDelete===false)
             $scope.showDelete=true
@@ -40,4 +40,7 @@ angular.module('conference.FavoritesCtrl', ['conference.services'])
         }
         else $ionicLoading.show({ template: message, noBackdrop: true, duration: 2000 });
     }
+
+    $scope.item.totpts = 100;
+    $scope.item.pts = 0;
 })

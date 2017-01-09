@@ -36,39 +36,20 @@
 
         
 
-          <div class="item-avatar">
-            <img src="pics/{{session.pic}}">
+          <div class="item item-icon-right item-thumbnail-left">
+            <img style="border-radius:100%;" src="pics/{{session.pic}}">
             <h2> {{session.title}} </h2>
-            <p>{{session.date}}</p>
-          </div>
+          
 
-          <div class="item item-body">
-            <img class="full-image" src="{{session.image}}">
+           
             <p>
              {{session.description}}
             </p>
-            <p>
-              <a href="#" class="subdued">1 Like</a>
-              <a href="#" class="subdued">5 Comments</a>
-            </p>
+            
           </div>
 
          
-          <div class="item tabs tabs-secondary tabs-icon-left">
-                <a class="tab-item" ng-click="addFavorite()">
-                    <i class="icon ion-heart" ng-class="{'fave': session.isFave}"></i>
-                    Favorite
-                </a>
-                <a class="tab-item" ng-click="follow()">
-                    <i class="icon ion-social-twitter"></i>
-                    Follow
-                </a>
-                
-                <a class="tab-item" ng-click="share(session)">
-                    <i class="icon ion-social-facebook"></i>
-                    Share
-                </a>
-            </div>
+          
  
         
       </ion-list>
