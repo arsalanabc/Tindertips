@@ -1,5 +1,6 @@
-
-
+/**
+ * Created by Charles on 01/08/17.
+ */
 angular.module('conference.BalanceCtrl', ['conference.services'])
 .controller('BalanceCtrl', function($scope, $ionicPopup, FacebookService, TwitterService, LinkedInService) {
     $scope.user = {};

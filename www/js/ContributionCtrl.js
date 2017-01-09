@@ -1,3 +1,6 @@
+/**
+ * Created by Charles on 01/08/17.
+ */
 angular.module('conference.ContributionCtrl', ['conference.services'])
 .controller('ContributionCtrl', function($scope,SessionService,$firebaseAuth,$firebaseObject, $firebaseArray){
 	$scope.user = {}

@@ -164,5 +164,5 @@ var app = angular.module('conference', ['ionic', 'conference.AppCtrl', 'conferen
       }
     });
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('landingpage');
+    $urlRouterProvider.otherwise('app/landingpage');
 });
