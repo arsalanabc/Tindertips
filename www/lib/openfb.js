@@ -177,6 +177,7 @@ var openFB = (function () {
      * OAuth workflow.
      */
     function oauthCallback(url) {
+        alert("123");
         // Parse the OAuth data received from Facebook
         var queryString,
             obj;

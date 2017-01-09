@@ -4,14 +4,23 @@
     </ion-nav-buttons>
 
     <ion-content class="has-header">
-        <div class="list card">
-            <div class="item stable-bg">
-                <h2>{{user.name}}</h2>
-                <p>{{user.email}}</p>
+     
+             <div class="header-img">
+             
+             <div class="image background-image" style="background-image: url('https://github.com/zachfitz/Ionic-Material/blob/master/demo/www/img/profile-bg.jpg?raw=true');" >
+             <!--<div class="item  background-image" >-->
+            
+                
             </div>
-            <div class="item item-body">
-                <img class="pic" ng-src="{{user.pic}}"/>
+            <img class="pic" ng-src="{{user.pic}}"/>
             </div>
-        </div>
+
+<div class="home">
+            <div class="padding">
+                <h2>{{user.name}} #tag</h2>
+                
+            </div>
+ </div>         
+     
     </ion-content>
 </ion-view>
