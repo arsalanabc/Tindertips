@@ -1,7 +1,21 @@
 angular.module('conference.ProfileCtrl', ['conference.services'])
-.controller('ProfileCtrl', function($scope, FacebookService, TwitterService, LinkedInService) {
+.controller('ProfileCtrl', function($scope, ngFB, FacebookService, TwitterService, LinkedInService) {
     $scope.user = {};
     var fbConnected=false;
+
+   /* ngFB.api({
+        path: '/me',
+        params: {fields: 'id,name,cover'}
+    }).then(
+        function (user) {
+            $scope.user = user;
+            console.log(user.id);
+        },
+        function (error) {
+            alert('Facebook error: ' + error.error_description);
+        });
+
+*/
 
     FacebookService.getStatus(function (result) {
         if (result.status == 'connected')
@@ -34,5 +48,8 @@ angular.module('conference.ProfileCtrl', ['conference.services'])
         $scope.user.email = "ryan.phillips@agilesystems.com";
         $scope.user.pic = "pics/default-user.jpg"
     }
+
+
+     
 })
 

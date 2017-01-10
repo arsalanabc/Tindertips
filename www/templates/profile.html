@@ -7,7 +7,7 @@
      
              <div class="header-img">
              
-             <div class="image background-image" style="background-image: url('https://github.com/zachfitz/Ionic-Material/blob/master/demo/www/img/profile-bg.jpg?raw=true');" >
+             <div class="image background-image" style="background-image: url({{user.cover.source}});" >
              <!--<div class="item  background-image" >-->
             
                 
@@ -15,12 +15,33 @@
             <img class="pic" ng-src="{{user.pic}}"/>
             </div>
 
-<div class="home">
+
+             <ion-bar class="bar bar-stable bar-subheader item-input-inset">
+      <div class="item-input-wrapper">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input id="searchKey" type="search" placeholder="Search Schedule" ng-model="searchTxt"
+               autocorrect="off" ng-change="setFilter()">
+        <button class="button button-clear" ng-click="clear()">X</button>
+      </div>
+  </ion-bar>
+  
+
+                <div class="home">
             <div class="padding">
-                <h2>{{user.name}} #tag</h2>
+                <h2>{{user.name}} {{user}}</h2>
                 
             </div>
+
+
+
  </div>         
      
+
+
+    
+
+
     </ion-content>
+
+
 </ion-view>
