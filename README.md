@@ -1,4 +1,4 @@
-TinderTips - A dating app where users can give items to each other
+TinderTips - A dating app where users can gift items to each other
 ===========================
 
 ## What is it written in
