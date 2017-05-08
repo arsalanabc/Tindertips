@@ -1,70 +1,35 @@
-Conference Tracker - An Advanced Hybrid App Tutorial
+TinderTips - A dating app where users can give items to each other
 ===========================
 
-### Follow [the in-depth tutorial here](http://hollyschinsky.github.io/ConferenceTracker/)
-
-## What you will build
-In this tutorial you will learn everything you need to take a hybrid application from scratch to app store lesson by lesson.
-This tutorial builds upon the previous [Beginning PhoneGap Workshop](hollyschinsky.github.io/phonegap-workshop/) where we built a basic 
-Conference application using no particular MVC framework. In this advanced version we will build an app using a more opinionated approach 
-with Cordova/Ionic/AngularJS and a Node/ExpressJS REST API backend data service.
-
-![](app-overview.jpg)
-
-Throughout this tutorial you will be advised on how to handle different challenges and learn many useful tips. This app implements the 
-following features that you will learn to add in the following lessons: 
+## What is it written in
+TinderTips uses Cordova/Ionic/AngularJS and a Node/ExpressJS REST API backend data service with Firebase as database. 
 
 ## App Features 
 1. **Side Menu** - Side menu navigation with icons
 2. **Custom Status Bar** - Set the font and icons to white to match the title bar text
-3. **Custom Keyboard Accessory Bar** - keep accessory bar for drop-down options on sort
-4. **Login with Facebook, LinkedIn or Twitter** - in addition to a custom login option using OAuth
+3. **Custom Keyboard Accessory Bar** - keep accessory bar for drop-down options on sort(in progress)
+4. **Login with Facebook, LinkedIn or Twitter** - in addition to a custom login option using OAuth(disabled)
 5. **Profile** - display the user's profile based on the social media logged in with
 6. **Facebook integration** - using a non-plugin approach
-7. **Add to native calendar** - easily add a session to your native calendar with all session details
+7. **Add to native calendar** - easily add a session to your native calendar with all session details (disabled)
 8. **Favorites Management** - add to favorites / remove from favorites by tapping heart again or via the Favorites menu option list manager
-9. **Swipe to share from list**
+9. **Modal login panel upon open**
 10. **Share with native sharing system on device**
 11. **Uses native notifications/dialogs**
 12. **Toast-style alerts**
-13. **Modal login panel upon open**
+13. **Handling offline**
 14. **Popover 'About' screen**
 15. **Sort options** - sort sessions by different criteria
-16. **Filter/Search** - Search all data with a search term
-17. **Handling offline**
-17. **Numerous AngularJS directives and patterns used including:**
-    -routing
-    -repeat
-    -ngSwitch
-    -ngShow
-    -ngHide
-    -ngClass
-    -ngClick    
+16. **Filter/Search** - Search all data with a search term(in progress)
+    
  
-## Plugins
-The following plugins will be added along the way to help provide the above features:
-
-1. Social Share Plugin 
-2. Calendar Plugin
-3. Toast Notification Plugin
-4. Status Bar Plugin
-5. Keyboard Plugin
-6. Device Plugin
-7. InAppBrowser (for social media OAuth)
-8. Console Plugin
-9. NetworkInformation/Connection Plugin
-
-## Other Skills You Will Learn
+## Other Skills demonstrated
 1. Setting icons and splash screens
 2. Debugging with Safari, Weinre and more
 3. Testing with the PhoneGap Developer App
 4. App Store Submission Tips
 5. Using Google font libraries
 6. How to setup OAuth.io with your social media accounts
-
-![](app-mix.jpg)
->The plugin details will be covered along the way. Take a look at the [Official Cordova Plugin Registry](http://plugins.cordova.io) here to explore further as well. 
-
  
 
 Setting up the Ionic App
