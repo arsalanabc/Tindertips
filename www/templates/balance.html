@@ -5,7 +5,7 @@
     <ion-content class="has-header">
         <div class="list card">
             <div class="item stable-bg">
-                <h1 style="text-align: center;"> {{ptbal}} pts </h1>
+                <h1 style="text-align: center;"> You have {{ptbal}} points</h1>
                 <div style="width: 100%; text-align: center">
                 	<button class = "button button-calm" ng-click="openOptions();">Add Points</button>
                 </div>
@@ -17,6 +17,19 @@
                 	<li>Granted 20 pts to Mountain Dew</li>
                 </ul>
             </div>
+
+            <ion-item ng-repeat="trans in transHistory" type="item-text-wrap" class="item-avatar" href="#/app/tagview/{{trans.to.tag}}" >
+            You gave {{trans.points}} to <strong>{{trans.to.name}} </strong>
+
+            
+            
+            <ion-delete-button class="ion-minus-circled" ng-click="favorites.splice($index, 1)"></ion-delete-button>
+          </ion-item>
+      </ion-list>
+
+
+
+
         </div>
     </ion-content>
 </ion-view>

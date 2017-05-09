@@ -3,23 +3,34 @@
     <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
-    <button class="button button-icon icon ion-ios7-minus-outline" ng-click="showBtn()"></button>
+    
+    <!-- this is for deleting items from favourite list. Lets work on that later 
+    <button class="button button-icon icon ion-ios7-minus-outline" ng-click="showBtn()"></button> -->
   </ion-nav-buttons>
   <ion-content class="has-header">
+
+<div class="item stable-bg">
+                
+                <div style="width: 100%; text-align: center">
+                  <button class = "button button-calm" ng-click="additem();">Submit an item</button>
+                </div>
+            </div>
+
+
       <!-- No item in the wishlist -->
         <p class="padLbl" ng-show="favorites.length==0">
         No items in wishlist. Go <a href="">add</a> some.</p>
       <!-- Display items -->
       <ion-list show-delete="showDelete" show-reorder="showReorder" can-swipe="listCanSwipe">
         
-          <ion-item ng-repeat="favorite in favorites" type="item-text-wrap" class="item-avatar" href="#/app/sessions/{{favorite.id}}">
+          <ion-item ng-repeat="favorite in favorites" type="item-text-wrap" class="item-avatar" href="#/app/favorite/{{favorite.$id}}">
             <table class="wishTable">
               <tr>
                 <td align="center">
-                  <img src="pics/{{favorite.pic}}" />
+                  <img src="{{favorite.pic}}" />
                 </td>
-                <td align="left">{{favorite.title}}</td>
-                <td align="right"> {{item.pts}} pts / {{item.totpts}} pts</td>
+                <td align="left">{{favorite.title | limitTo: 50}}</td>
+                <td align="right"> {{favorite.pts_have}} pts / {{favorite.pts_need}} pts</td>
               </tr>
             </table>
             

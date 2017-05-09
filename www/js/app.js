@@ -1,5 +1,5 @@
 var app = angular.module('conference', ['ionic', 'conference.AppCtrl', 'conference.SessionsCtrl', 'conference.SessionCtrl',
-    'conference.FavoritesCtrl', 'conference.ProfileCtrl','conference.BalanceCtrl','ion-floating-menu','ngCordova', 'firebase', 'conference.LandingPageCtrl','ngOpenFB'])
+    'conference.FavoritesCtrl', 'conference.FavoriteCtrl','conference.ProfileCtrl','conference.BalanceCtrl','ion-floating-menu','ngCordova', 'firebase', 'conference.LandingPageCtrl','ngOpenFB'])
 
 
 
@@ -106,6 +106,26 @@ var app = angular.module('conference', ['ionic', 'conference.AppCtrl', 'conferen
           'menuContent': {
               templateUrl: "templates/sessions.html",
               controller: 'SessionsCtrl'
+          }
+      }
+    })
+
+    .state('app.favorite', {
+      url: "/favorite/:favoriteId",
+      views: {
+          'menuContent': {
+              templateUrl: "templates/favorite.html",
+              controller: 'FavoriteCtrl'
+          }
+      }
+    })
+
+    .state('app.tagview', {
+      url: "/tagview/:tagId",
+      views: {
+          'menuContent': {
+              templateUrl: "templates/tagview.html",
+              controller: 'TagViewCtrl'
           }
       }
     })

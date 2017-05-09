@@ -51,7 +51,7 @@ app.service('FacebookService', function() {
     this.getProfile = function(successCB,failCB) {
         openFB.api({
             path: '/me',
-            params: {fields: 'id,name,email'},
+            params: {fields: 'id,name,email,cover'},
             success: function (user) {
                 success(user);
             },

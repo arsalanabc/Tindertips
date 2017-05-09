@@ -1,9 +1,10 @@
 var app = angular.module('conference', ['ionic', 'conference.AppCtrl', 'conference.SessionsCtrl', 'conference.SessionCtrl',
-    'conference.FavoritesCtrl', 'conference.ProfileCtrl','conference.BalanceCtrl','ion-floating-menu','ngCordova', 'firebase', 'conference.LandingPageCtrl'])
+    'conference.FavoritesCtrl', 'conference.FavoriteCtrl','conference.ProfileCtrl','conference.BalanceCtrl','ion-floating-menu','ngCordova', 'firebase', 'conference.LandingPageCtrl','ngOpenFB'])
 
 
 
-    .run(function($ionicPlatform) {
+    .run(function($ionicPlatform,ngFB) {
+        ngFB.init({appId: '917617758369606'});
         $ionicPlatform.ready(function() {
 
           
@@ -42,8 +43,7 @@ var app = angular.module('conference', ['ionic', 'conference.AppCtrl', 'conferen
 
 
 .config(function($stateProvider, $urlRouterProvider) {
-  //Facebook integration - Register your app and get your App ID from http://developer.facebook.com
-  openFB.init({appId: 'app id'});
+  
 
 
         $stateProvider
@@ -110,6 +110,26 @@ var app = angular.module('conference', ['ionic', 'conference.AppCtrl', 'conferen
       }
     })
 
+    .state('app.favorite', {
+      url: "/favorite/:favoriteId",
+      views: {
+          'menuContent': {
+              templateUrl: "templates/favorite.html",
+              controller: 'FavoriteCtrl'
+          }
+      }
+    })
+
+    .state('app.tagview', {
+      url: "/tagview/:tagId",
+      views: {
+          'menuContent': {
+              templateUrl: "templates/tagview.html",
+              controller: 'TagViewCtrl'
+          }
+      }
+    })
+
     .state('app.twitter', {
       url: "/twitter",
       views: {
@@ -154,5 +174,5 @@ var app = angular.module('conference', ['ionic', 'conference.AppCtrl', 'conferen
       }
     });
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('landingpage');
+    $urlRouterProvider.otherwise('app/landingpage');
 });
