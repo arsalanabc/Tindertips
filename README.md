@@ -1,3 +1,6 @@
+NOTE: For the login, any username and password can be used
+
+
 TinderTips - A dating app where users can gift items to each other
 ===========================
 
