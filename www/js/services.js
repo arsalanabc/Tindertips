@@ -27,7 +27,53 @@ angular.module('conference.services', ['ngResource','firebase'])
   
 })
 
-.factory('SessionService', function($http, $firebaseArray) {
+
+.factory('fireBaseData', function($firebase) {
+  var ref = new Firebase("https://tinder-tips.firebaseio.com"),
+    refCart = new Firebase("https://tinder-tips.firebaseio.com/cart"),
+    refUser = new Firebase("https://tinder-tips.firebaseio.com/users"),
+    refCategory = new Firebase("https://tinder-tips.firebaseio.com/category"),
+    refOrder = new Firebase("https://tinder-tips.firebaseio.com/orders"),
+    refFeatured = new Firebase("https://tinder-tips.firebaseio.com/featured"),
+    refMenu = new Firebase("https://tinder-tips.firebaseio.com/menu"),
+    refJobs = new Firebase("https://tinder-tips.firebaseio.com/jobs"),
+    refCompany = new Firebase("https://tinder-tips.firebaseio.com/company"),
+    refComments = new Firebase("https://tinder-tips.firebaseio.com/comments");
+  return {
+    ref: function() {
+      return ref;
+    },
+    refCart: function() {
+      return refCart;
+    },
+    refUser: function() {
+      return refUser;
+    },
+    refCategory: function() {
+      return refCategory;
+    },
+    refOrder: function() {
+      return refOrder;
+    },
+    refFeatured: function() {
+      return refFeatured;
+    },
+    refMenu: function() {
+      return refMenu;
+    },
+    refJobs: function() {
+      return refJobs;
+    },
+    refCompany: function() {
+      return refCompany;
+    },
+    refComments: function() {
+      return refComments;
+    }
+  }
+})
+
+.factory('SessionService', function($http, $firebaseArray, fireBaseData) {
     var users = [];
     
     return {
@@ -47,13 +93,16 @@ angular.module('conference.services', ['ngResource','firebase'])
             */
 
         getUsers: function(){
-             return $firebaseArray(new Firebase("https://radiant-torch-374.firebaseio.com/comments"));
+             //return $firebaseArray(new Firebase("https://radiant-torch-374.firebaseio.com/comments"));
+             return $firebaseArray(fireBaseData.refComments());
         },
 
         getUser: function(id){         
          //console.log("https://radiant-torch-374.firebaseio.com/comments/"+id); 
          var arr = [];
-            var session = new Firebase("https://radiant-torch-374.firebaseio.com/comments/"+id).once('value', function(snap) {
+
+         //var session = new Firebase("https://radiant-torch-374.firebaseio.com/comments/"+id).once('
+            var session = fireBaseData.refComments().child(id).once('value', function(snap) {
 
                 arr['date'] = snap.val()['date'];
                 arr['description'] = snap.val()['description'];
@@ -81,8 +130,9 @@ angular.module('conference.services', ['ngResource','firebase'])
 
 
 .service('FavoriteService', ['$filter', function($filter) {
-    var service = {
-        favorites: [],
+      var service = {
+       
+        // favorites: $firebaseArray(fireBaseData.refComments()),
         addFave: function ( item, successCallback, dupeCallback ) {
             // Only add if doesn't exist
             var session = filterById(service.favorites,item.id);
@@ -102,7 +152,7 @@ angular.module('conference.services', ['ngResource','firebase'])
         },
         removeFave: function (item) {
             //service.favorites.splice(service.favorites.indexOf(item),1);
-            var obj = $filter('filter')(service.favorites, function (fave) {
+            var obj = $filter('filter')(favorites, function (fave) {
                 console.log("Fave id " + fave.id)
                 return fave.id === item.id;})[0];
             service.favorites.splice(service.favorites.indexOf(obj),1);

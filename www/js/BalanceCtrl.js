@@ -1,8 +1,10 @@
 
 
 angular.module('conference.BalanceCtrl', ['conference.services'])
-.controller('BalanceCtrl', function($scope, $ionicPopup, FacebookService, TwitterService, LinkedInService) {
+.controller('BalanceCtrl', function($scope, $ionicPopup, FacebookService, TwitterService, LinkedInService, fireBaseData, $firebaseArray, $firebaseObject
+    ) {
     $scope.user = {};
+
     var fbConnected=false;
 
     FacebookService.getStatus(function (result) {
@@ -12,14 +14,22 @@ angular.module('conference.BalanceCtrl', ['conference.services'])
 
     if (fbConnected) {
         FacebookService.getProfile(function (user) {
-            $scope.user = user;
-            $scope.user.pic = "http://graph.facebook.com/" + user.id + "/picture?height=100&type=normal&width=100";
+
+           $scope.user = fireBaseData.refUser().child(user.id).once("child_added",function(data){
+            $scope.ptbal = data.val().pts_bal;
+            console.log(data.val())
+
+            $scope.getTrans(user.id)
+
+           });
         }, null);
     }
     else {
         // Some Default User Info
-        $scope.ptbal = 0;
+        $scope.ptbal = 10;
     }
+
+     
 
     // open radio pop-up prompt for users to choose number of points to purchase
     
@@ -70,4 +80,37 @@ angular.module('conference.BalanceCtrl', ['conference.services'])
             ]
         });
     }
+    
+    $scope.getTrans = function(userid){
+       // $scope.transHistory = $firebaseArray(fireBaseData.ref().child('transaction_history').orderByChild('from').equalTo(userid));
+       // console.log("tset")
+        //console.log($scope.transHistory)
+
+
+      var listofOB = [];
+      var empOB;
+      fireBaseData.ref().child('transaction_history').orderByChild('from').equalTo(userid).on('child_added', snap1 => {
+      
+       //empOB = snap1.val(); 
+       //console.log(empOB)
+
+        fireBaseData.refUser().child(snap1.val().to).on('child_added', function(snap2){
+            
+            //console.log(snap2.val())
+            empOB = snap1.val(); 
+            empOB.to = snap2.val()
+            listofOB.push(empOB);
+             //console.log(empOB);
+           
+            //console.log(listofOB)
+        })
+
+
+      })
+     // console.log(listofOB);
+      $scope.transHistory = listofOB;
+
+    }
+
+
 });

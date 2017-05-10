@@ -1,0 +1,179 @@
+<html>
+  <head>
+    <title>Firebase Basic Chat Example</title>
+
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- Custom JS -->
+
+
+
+<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC8rO5jLko6okKQ9AI1WJw5uaxgYLCQFp4",
+    authDomain: "tinder-tips.firebaseapp.com",
+    databaseURL: "https://tinder-tips.firebaseio.com",
+    storageBucket: "tinder-tips.appspot.com",
+    messagingSenderId: "630539659473"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+
+    <script>
+
+$(function() {
+  // Get a reference to the root of the chat data.
+  var ref = new Firebase("https://tinder-tips.firebaseio.com/users");
+
+
+ ref.child("userid").once('value', function(snapshot) {
+                 document.write(snapshot.val);
+            });
+
+/*  // Add a callback that is triggered for each chat message.
+  messagesRef.limitToLast(10).on("child_added", function (snapshot) {
+    var message = snapshot.val();
+    $("<div/>").text(message.userid).prepend($("<em/>")
+      .text(message.name + ": ")).appendTo($("#messagesDiv"));
+    $("#messagesDiv")[0].scrollTop = $("#messagesDiv")[0].scrollHeight;
+  });
+*/
+
+
+
+document.write("<table>");
+
+  ref.on("child_added", function (snapshot) {
+    var message = snapshot.val();
+
+
+if(message.approved == false){
+//document.write(snapshot.key());
+document.write("<div><tr><td><a href='"+message.link+"'>link</a></td><td >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</td><td><label >item name: </label><input id='"+snapshot.key()+"-title"+"' value='"+message.title+"'/></td><td><label >item pic: </label><input id='"+snapshot.key()+"-pic"+"' value='"+message.pic+"' /></td><td><label >item price: </label><input id='"+snapshot.key()+"-pts"+"' value='"+message.pts_need+"' /></td><td><label >aprrove: </label><input id='"+snapshot.key()+"-approve"+"' type=\"checkbox\"/></td><input type=\"button\" onClick=\"edit('"+snapshot.key()+"')\" value=\"edit\" id=\'edit\'></input></tr></div>"
+
+);
+}
+
+
+
+
+//$("<input>").text(message.userid).prepend($("<em/>")
+ //     .value(message.name + ": ")).appendTo($("#messagesDiv"));
+
+
+    $("<div/>").text(message.userid).prepend($("<em/>")
+      .text(message.name + ": ")).appendTo($("#messagesDiv"));
+    $("#messagesDiv")[0].scrollTop = $("#messagesDiv")[0].scrollHeight;
+  });
+
+
+});
+
+
+document.write("</table>");
+
+function edit(id){
+
+var title = document.getElementById(id+"-title").value;
+var pic = document.getElementById(id+"-pic").value;
+var pts = document.getElementById(id+"-pts").value;
+var approve = document.getElementById(id+"-approve").checked;
+
+var messagesRef = new Firebase("https://tinder-tips.firebaseio.com/comments/"+id);
+messagesRef.update({title:title,pic:pic,pts_need:pts,approved:approve});
+
+alert(approve);
+}
+
+</script>
+
+
+
+
+    <!-- Custom CSS -->
+    <style>/* Global */
+body {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  background-color: #f8f8f8;
+  font-size: 24px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #424547;
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #424547;
+}
+
+h3 {
+  font-size: 24px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #424547;
+}
+
+p {
+ font-size: 16px;
+}
+
+input {
+  font-size: 24px;
+}
+
+
+input[type=text] {
+  color: #424547;
+  border: 1px solid #c2c2c2;
+  background-color: white;
+}
+
+em {
+  font-style: normal;
+  font-weight: bold;
+  color: black;
+}
+
+
+/* Chat */
+#messagesDiv {
+  background-color: white;
+  overflow: auto;
+  height: 230px;
+  width: 100%;
+  padding: 10px;
+  border: 8px solid #424547;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+#nameInput {
+  width: 26%;
+}
+
+#messageInput {
+  width: 68%;
+}</style>
+  </head>
+
+  <body>
+    <h1>excel VBA testing</h1>
+
+    <div id="messagesDiv"></div>
+
+    <input type="text" id="nameInput" placeholder="Name" />
+    <input type="text" id="messageInput" placeholder="Message..." />
+  </body>
+</html>

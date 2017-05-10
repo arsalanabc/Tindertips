@@ -32,6 +32,14 @@ module.exports = [
         "clobbers": [
             "CameraPopoverHandle"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
+        "clobbers": [
+            "cordova.InAppBrowser.open",
+            "window.open"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -39,7 +47,8 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.2.0",
     "cordova-plugin-compat": "1.0.0",
-    "cordova-plugin-camera": "2.2.0"
+    "cordova-plugin-camera": "2.2.0",
+    "cordova-plugin-inappbrowser": "1.6.1"
 };
 // BOTTOM OF METADATA
 });

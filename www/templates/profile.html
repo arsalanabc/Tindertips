@@ -4,23 +4,53 @@
     </ion-nav-buttons>
 
     <ion-content class="has-header">
-     
-             <div class="header-img">
-             
-             <div class="image background-image" style="background-image: url('https://github.com/zachfitz/Ionic-Material/blob/master/demo/www/img/profile-bg.jpg?raw=true');" >
-             <!--<div class="item  background-image" >-->
-            
-                
-            </div>
-            <img class="pic" ng-src="{{user.pic}}"/>
-            </div>
 
-<div class="home">
-            <div class="padding">
-                <h2>{{user.name}} #tag</h2>
+
+   
+
+       <!--  <ion-slide-box on-slide-changed="slideChanged(index)">
+
+          <ion-slide ng-repeat="slide in images">
                 
-            </div>
- </div>         
-     
+       
+            <img style="width:50%; height: 80%" ng-src="{{slide}}"/>
+
+          </ion-slide>
+
+        </ion-slide-box> -->
+
+
+
+         <div class="col">
+        <div class="item-input-inset">
+          <label class="item-input-wrapper" row="45">
+            <input type="text" placeholder="About you">
+          </label>
+        
+        </div>
+      </div>
+
+    <ion-item ng-repeat="favorite in items" type="item-text-wrap" class="item-avatar">
+            <table class="wishTable">
+              <tr>
+                <td align="center">
+                  <img src="{{favorite.pic}}" />
+                </td>
+                <td align="left">{{favorite.title | limitTo: 50}}</td>
+                
+                <td align="right"> 
+
+ <button class = "button button-calm" ng-click="tip();">Tip <br>
+
+                {{favorite.pts_have}}  / {{favorite.pts_need}} </button></td>
+              </tr>
+            </table>
+            
+            <ion-delete-button class="ion-minus-circled" ng-click="favorites.splice($index, 1)"></ion-delete-button>
+          </ion-item>
+
+
     </ion-content>
+
+
 </ion-view>

@@ -259,7 +259,22 @@ top: 20%; left: 5%; right: 5%; bottom: 20%;
 
     }
 .button{
-	opacity: 0.8 !important;
+	opacity: .8 !important;
+  /*
+   padding: .5px 19px;
+   -webkit-border-radius: 13px;
+   -moz-border-radius: 13px;
+   border-radius: 13px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: black;
+   font-size: 19px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   */
 }
 
 /*
@@ -284,4 +299,23 @@ top: 20%; left: 5%; right: 5%; bottom: 20%;
    position:relative;
 }
 
+
+
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+.slider {
+  height: 80%;
+}
+
+.slider-slide {
+  padding-top: 80px;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+
+}
 

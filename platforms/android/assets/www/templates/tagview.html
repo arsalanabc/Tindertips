@@ -1,0 +1,57 @@
+
+<ion-view title="TagView">
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="has-header">
+
+
+   
+
+       <!--  <ion-slide-box on-slide-changed="slideChanged(index)">
+
+          <ion-slide ng-repeat="slide in images">
+                
+       
+            <img style="width:50%; height: 80%" ng-src="{{slide}}"/>
+
+          </ion-slide>
+
+        </ion-slide-box> -->
+
+
+
+         <div class="col">
+        <div class="item-input-inset">
+          <label class="item-input-wrapper" row="45">
+            <input type="text" placeholder="About you">
+          </label>
+        
+        </div>
+      </div>
+
+    <ion-item ng-repeat="favorite in items" type="item-text-wrap" class="item-avatar">
+            <table class="wishTable">
+              <tr>
+                <td align="center">
+                  <img src="{{favorite.pic}}" />
+                </td>
+                <td align="left">{{favorite.title | limitTo: 50}} - {{favorite.$id}}</td>
+                
+                <td align="right"> 
+
+ <button class = "button button-calm" ng-click="tip(favorite.$id, favorite.pts_have);">Tip <br>
+
+                {{favorite.pts_have}}  / {{favorite.pts_need}} </button></td>
+              </tr>
+            </table>
+            
+            <ion-delete-button class="ion-minus-circled" ng-click="favorites.splice($index, 1)"></ion-delete-button>
+          </ion-item>
+
+
+    </ion-content>
+
+
+</ion-view>

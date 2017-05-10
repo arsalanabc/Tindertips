@@ -1,10 +1,15 @@
 angular.module('conference.AppCtrl', ['conference.services'])
-    .controller('AppCtrl', function($scope, $state, $ionicModal, $ionicLoading, $timeout, FacebookService, TwitterService, LinkedInService) {
+    .controller('AppCtrl', 
+        function($scope, $state, $ionicModal, 
+            $ionicLoading, $timeout,  
+            TwitterService, LinkedInService) {
     console.log("App ctrl initialize");
 
     // Init the login modal
     $scope.loginData = {};
     $scope.loginMsg="";
+
+
 
     // Create the login modal that we will use later
     $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -37,7 +42,7 @@ angular.module('conference.AppCtrl', ['conference.services'])
             }, 1000);
             $scope.loginMsg = "Login successful!";
             $scope.login.result = true;
-            $state.go('/sessions');
+            $state.go('app/sessions');
             
         }
         else {
@@ -46,21 +51,7 @@ angular.module('conference.AppCtrl', ['conference.services'])
         }
     };
 
-    // Facebook Login (actual Facebook login, have to use your FB credentials)
-    $scope.fbLogin = function() {
-        FacebookService.login(rspCallback);
-        function rspCallback(response) {
-            if (response.status === 'connected') {
-                $scope.loginMsg = "Facebook login succeeded!";
-                $scope.login.result = true;
-                $scope.closeLogin();
-                // Could add code to check if on profile page and swap out user with logged in one...
-            } else {
-                $scope.loginMsg="Facebook login failed";
-                $scope.login.result=false;
-            }
-        }
-    }
+  
 
     // Twitter Login
     $scope.twLogin = function() {

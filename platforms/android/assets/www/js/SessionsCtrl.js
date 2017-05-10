@@ -2,7 +2,7 @@
  * Created by hollyschinsky on 10/30/14.
  */
 angular.module('conference.SessionsCtrl', ['conference.services'])
-.controller('SessionsCtrl', function($scope, SessionService, $ionicPopover, $ionicLoading, $ionicModal,$firebaseAuth,$firebaseObject, $firebaseArray) {
+.controller('SessionsCtrl', function($scope, SessionService, $ionicPopover, $ionicLoading, $ionicModal, fireBaseData, $firebaseAuth,$firebaseObject, $firebaseArray) {
 
 
    $scope.sessions = SessionService.getUsers();
@@ -39,7 +39,7 @@ $ionicLoading.show();*/
 
 
 // this is for interacting with Firebase
-var fb = new Firebase("https://radiant-torch-374.firebaseio.com/comments");
+var fb = fireBaseData.refComments();
 var fbAuth = $firebaseAuth(fb);
 var firebaseArray =  $firebaseArray(fb);
 var firebaseObject =  $firebaseObject(fb);
